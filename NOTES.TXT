@@ -1,0 +1,49 @@
+Requirements:
+    - To convert UI file use: pyuic6 input.ui -o output.py
+
+Change App aesthetics:
+    -   (DONE) Create Sidebar menu: expandable:
+            - (top) HOME, NEW, LOAD, DELETE, ERASE, SEE
+            - (bottom) DOWNLOAD
+    -  (DONE) Top menu: General Info Page | option do add pages:
+        -  (DONE) Option to add meal pages: 3 types - simple, complex, main
+    -  (DONE) App starts only with main window with just Logo
+
+
+NEXT STEPS:
+    - Add a label on main page indicating the current plan ID that's opened
+PLAN LOADED - DELETED - INSERT PAGE - ERROR AUTOSAVE POPUP
+    When new plan format arrives:
+    - Create 3 page types as per plan page
+    - Prepare input handling
+    - Prepare database saving and loading of new widgets
+    - Prepare Plan download and writing on pdf templates
+    - Test
+
+Now:
+    -
+
+   - Setup Database:
+        - Save Plans by ID
+        - Create Database with fixed fields - general page - plus dynamic fields - added pages that can be of
+        3 different types. Each time a page is added, when the user saves the plan the program adds the new page and
+        corresponding data fields to the database
+        We need to ensure that:
+
+        - General data is stored when the user begins creating a new plan.
+        - Dynamic page data is added to the database every time the user creates or modifies a page.
+        - Each dynamic page is uniquely identifiable by the userID, the pageNumber, and the pageType.
+
+        - !!! Find way to keep track of new pages added when it's time do save the plan !!!!
+        - When the user adds a new page, we:
+
+            - Increment a pageNumber counter (to track pages per user/plan).
+            - Record the new page's metadata (userID, pageType, pageNumber) in the database.
+            - Store widget values (e.g., inputs, checkboxes, etc.) from the UI.
+
+   -
+
+              Table General | Table Simple
+userID
+userName
+
