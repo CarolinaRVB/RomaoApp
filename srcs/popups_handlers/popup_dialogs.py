@@ -1,9 +1,5 @@
-from PyQt6.QtGui import QPixmap, QFont
 from PyQt6 import QtWidgets, QtGui, QtCore
-from PyQt6.QtWidgets import QDialog, QVBoxLayout, QListWidget, QListWidgetItem
-from PyQt6.QtCore import Qt
-from page_type_popup import Ui_Form as choose_page
-
+from ..popups_handlers.page_type_popup import Ui_Form as choose_page
 
 def choose_page_popup():
     page_type_popup = QDialog()

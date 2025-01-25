@@ -1,18 +1,18 @@
 import os
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap
-from image_bank_dialog import ImageBankDialog
-from PyQt6.QtWidgets import QMainWindow, QWidget, QDialog, QTabWidget, QCheckBox, QStackedWidget, QFrame, QPushButton, QHBoxLayout
-from main_window import Ui_MainWindow
-from page1 import Ui_Form as page1
-from page2 import Ui_Form as page2
-from page3 import Ui_Form as page3
+from PyQt6.QtWidgets import QWidget, QPushButton, QFileDialog
+from .page1 import Ui_Form as page1
+from .page2 import Ui_Form as page2
+from .page3 import Ui_Form as page3
+from ..images_handlers.image_bank_dialog import ImageBankDialog
+from ..popups_handlers.popup_dialogs import (choose_page_popup,
+                                             popup_load_plan_dialog,
+                                             popup_warning,
+                                             popup_insert_page_dialog)
+from ..database.database import (delete_page_from_plan,
+                                 update_pages_list)
 
-from popup_dialogs import choose_page_popup, popup_load_plan_dialog, popup_warning, popup_insert_page_dialog
-from database import (save_plan_data, load_plan_data, show_user_ids, insert_new_id, new_plan_from_copy,
-                      delete_page_from_plan, update_pages_list, erase_app_entries, delete_plan, stop_auto_save,
-                      start_auto_save)
-from widgets_names import WidgetsNames
 
 class PageManager():
     def __init__(self, main_window):
@@ -20,6 +20,21 @@ class PageManager():
         self.top_bar_layout = main_window.top_bar_layout
         self.main_window = main_window
         self.page_type = 0
+        self.handle_first_page_img(self.ui)
+    def handle_first_page_img(self, ui):
+        add_buttons = {"push_profile_add": "label_profile"}
+        remove_buttons = {"push_profile_remove": "label_profile"}
+        img_labels = ["label_profile"]
+
+        for button_name, label_name in add_buttons.items():
+            button = getattr(ui, button_name)
+            label = getattr(ui, label_name)
+            button.clicked.connect(lambda _, lbl=label: self.select_other_imgs(lbl, width=170, height=170))
+        for btn_name, lbl_name in remove_buttons.items():
+            button = getattr(ui, btn_name)
+            label = getattr(ui, lbl_name)
+            print(f"clicked on {lbl_name} and {label}")
+            button.clicked.connect(lambda _, lbl=label: self.remove_img(lbl))
 
     def add_new_page(self, insert=False):
         self.page_type = choose_page_popup()
@@ -134,6 +149,23 @@ class PageManager():
         label.clear()
         label.setToolTip('')
         label.setText("img")
+
+    def select_other_imgs(self, label, width=50, height=50, scaled=False):
+        # Open a file dialog for the user to select an image
+        file_dialog = QFileDialog()
+        file_dialog.setNameFilter("Images (*.png *.jpg *.jpeg *.bmp *.gif)")  # Filter for image file types
+        file_dialog.setFileMode(QFileDialog.FileMode.ExistingFile)  # Ensure only existing files can be selected
+        file_dialog.setViewMode(QFileDialog.ViewMode.Detail)  # Optional: Show detailed view
+
+        if file_dialog.exec():  # If the user selected a file
+            selected_file = file_dialog.selectedFiles()[0]  # Get the selected file path
+            self.ui.image_path = selected_file
+            pixmap = QPixmap(self.ui.image_path)
+
+            scaled_pixmap = pixmap.scaled(width, height, aspectRatioMode=Qt.AspectRatioMode.KeepAspectRatio)
+            label.setPixmap(scaled_pixmap)
+            label.setScaledContents(scaled)
+            label.setToolTip(self.ui.image_path)
 
     def open_image_bank(self, label, width=50, height=50, scaled=False):
         image_folder = 'romao_images'

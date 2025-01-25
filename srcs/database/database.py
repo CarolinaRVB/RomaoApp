@@ -2,13 +2,16 @@ import os
 import sqlite3
 from PyQt6 import QtWidgets
 from PyQt6.QtGui import QPixmap
-from page1 import Ui_Form as page1
-from page2 import Ui_Form as page2
-from page3 import Ui_Form as page3
 from PyQt6.QtCore import QTimer, Qt
-from widgets_names import WidgetsNames
-from PyQt6.QtWidgets import QPushButton, QHBoxLayout
-from popup_dialogs import popup_load_plan_dialog, UserDialog, popup_warning, PlanSelectionDialog
+from PyQt6.QtWidgets import QPushButton
+from srcs.page_handlers.page1 import Ui_Form as page1
+from srcs.page_handlers.page2 import Ui_Form as page2
+from srcs.page_handlers.page3 import Ui_Form as page3
+from ..utils.widgets_names import WidgetsNames
+from ..popups_handlers.popup_dialogs import (popup_load_plan_dialog,
+                                             UserDialog,
+                                             popup_warning,
+                                             PlanSelectionDialog)
 
 timer = None
 is_saving = False

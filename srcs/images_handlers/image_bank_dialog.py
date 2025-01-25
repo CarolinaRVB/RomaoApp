@@ -1,8 +1,9 @@
 import os
 from PyQt6.QtGui import QPixmap, QFont, QColor
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QSize
-from PyQt6.QtWidgets import (QDialog, QVBoxLayout, QLineEdit, QGridLayout, QLabel, QListWidget, QListWidgetItem, QPushButton,
-                              QScrollArea, QWidget, QHBoxLayout, QSpacerItem, QSizePolicy)
+from PyQt6.QtWidgets import (QDialog, QVBoxLayout, QLineEdit, QGridLayout, QLabel,
+                             QListWidget, QListWidgetItem, QPushButton, QScrollArea,
+                             QWidget, QHBoxLayout, QSpacerItem, QSizePolicy)
 
 class ImageLoader(QThread):
     images_loaded = pyqtSignal(list, list)

@@ -1,10 +1,12 @@
 from PyQt6.QtCore import Qt
-from page_manager import PageManager
-from main_window import Ui_MainWindow
-from widgets_names import WidgetsNames
 from PyQt6.QtWidgets import QMainWindow
-from database import (save_plan_data, load_plan_data, show_user_ids, insert_new_id, new_plan_from_copy,
-                      erase_app_entries, delete_plan)
+from .main_window import Ui_MainWindow
+from ..page_handlers.page_manager import PageManager
+from ..utils.widgets_names import WidgetsNames
+from ..download_handlers import draw_pages_and_download
+from ..database.database import (save_plan_data, load_plan_data, show_user_ids,
+                                 insert_new_id, new_plan_from_copy, erase_app_entries, delete_plan)
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -37,11 +39,11 @@ class MainWindow(QMainWindow):
         self.ui.push_ext_new_copy.clicked.connect(lambda: new_plan_from_copy(self, self.ui))
         self.ui.push_ext_erase.clicked.connect(lambda: erase_app_entries(self, self.ui, widgets_list, self.current_user_id))
         self.ui.push_ext_delete.clicked.connect(lambda: delete_plan(self, self.ui))
+        #self.ui.push_ext_download.connect(lambda: download(self, self.ui))
+        self.ui.push_ext_download.clicked.connect(lambda: draw_pages_and_download(self.ui))
 
         # Pages actions
         self.ui.page_home.clicked.connect(lambda: self.page_manager.switch_to_page(self.ui.stacked_home))
         self.ui.page_general.clicked.connect(lambda: self.page_manager.switch_to_page(self.ui.stacked_general))
         self.ui.page_add.clicked.connect(self.page_manager.add_new_page)
         self.ui.page_add_where.clicked.connect(lambda: self.page_manager.add_new_page(True))
-
-

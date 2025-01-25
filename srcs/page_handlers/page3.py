@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'gui/page2.ui'
+# Form implementation generated from reading ui file 'ui/page3.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -54,15 +54,14 @@ class Ui_Form(object):
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
-        self.comboBox.addItem("")
         self.verticalLayout_4.addWidget(self.comboBox)
-        self.textEdit2 = QtWidgets.QTextEdit(parent=self.frame_9)
-        self.textEdit2.setStyleSheet("background-color: rgb(110, 160, 110);")
-        self.textEdit2.setFrameShape(QtWidgets.QFrame.Shape.Panel)
-        self.textEdit2.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
-        self.textEdit2.setLineWidth(2)
-        self.textEdit2.setObjectName("textEdit2")
-        self.verticalLayout_4.addWidget(self.textEdit2)
+        self.textEdit3 = QtWidgets.QTextEdit(parent=self.frame_9)
+        self.textEdit3.setStyleSheet("background-color: rgb(110, 160, 210);")
+        self.textEdit3.setFrameShape(QtWidgets.QFrame.Shape.Panel)
+        self.textEdit3.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
+        self.textEdit3.setLineWidth(2)
+        self.textEdit3.setObjectName("textEdit3")
+        self.verticalLayout_4.addWidget(self.textEdit3)
         self.frame_8 = QtWidgets.QFrame(parent=self.frame_9)
         self.frame_8.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
@@ -370,10 +369,9 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.type.setText(_translate("Form", "2"))
-        self.comboBox.setItemText(0, _translate("Form", "Teste 1"))
-        self.comboBox.setItemText(1, _translate("Form", "Teste 2"))
-        self.comboBox.setItemText(2, _translate("Form", "Teste 2"))
+        self.type.setText(_translate("Form", "3"))
+        self.comboBox.setItemText(0, _translate("Form", "opçao 1"))
+        self.comboBox.setItemText(1, _translate("Form", "opçao 2"))
         self.radioButton.setText(_translate("Form", " + \"/\""))
         self.label.setText(_translate("Form", "img"))
         self.pushButton.setText(_translate("Form", "+"))

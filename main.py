@@ -1,9 +1,9 @@
-from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QApplication
-from main_window import Ui_MainWindow
-from app_window import MainWindow
-from image_folder_watcher import (start_folder_watcher, stop_folder_watcher)
-from database import init_db
+#from app_window import MainWindow
+from srcs.window_handler.app_window import MainWindow
+#from srcs.window_handler.app_window import MainWindow
+from srcs.images_handlers.image_folder_watcher import (start_folder_watcher, stop_folder_watcher)
+from srcs.database.database import init_db
 import os
 import sys
 

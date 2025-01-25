@@ -11,7 +11,11 @@ Change App aesthetics:
 
 
 NEXT STEPS:
-    - Add a label on main page indicating the current plan ID that's opened
+    - Handle remaining text lines of first page
+    - Create pages UIs
+    - Check if it's possible to rotate pages on tabWidget
+
+
 PLAN LOADED - DELETED - INSERT PAGE - ERROR AUTOSAVE POPUP
     When new plan format arrives:
     - Create 3 page types as per plan page
@@ -19,6 +23,18 @@ PLAN LOADED - DELETED - INSERT PAGE - ERROR AUTOSAVE POPUP
     - Prepare database saving and loading of new widgets
     - Prepare Plan download and writing on pdf templates
     - Test
+
+Plan for Download Option:
+    - Change the app_window self.page_buttons_list variable to be a dictionary: each page that is added will have
+    as a Key it's name and it's value will be the page type (1, 2, 3, etc) -> adapt the rest of the code to just check
+    the keys of the dict
+    - Then when Download is clicked:
+        - The app will iterate the dict page_buttons_list by order, for each key accessed the function will determine
+        what type of page it is and redirect the code to the corrresponding function handler:
+            - Each page will have a set of fixed labels and text boxes with corresponding coordinates (on a dict?)
+            - The app checks if they have content or not, if so, it will draw the content on the pdf template
+            according to their positions: just gonna need starting X and Y, and max length and hight
+        - Download function can be a Class? --> has a self.text_widgets and self.label_widgets?
 
 Now:
     -

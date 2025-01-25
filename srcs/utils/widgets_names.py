@@ -1,10 +1,9 @@
-
 class WidgetsNames:
     def __init__(self):
         self.setup_ui()
 
     def setup_ui(self):
-        self.widgets_general = ["username", "line_planID", "label_profile", "line_name",
+        self.widgets_general = ["username", "line_planID", "label_profile", "line_name", "line_age",
                                 "line_weight", "line_mg", "line_objectives", "line_date", "line_appoint", "line_meals"]
         self.widgets_page_simple = ["plain_new", "plain_new2"]
         self.widgets_page_complex = [] # to be added
