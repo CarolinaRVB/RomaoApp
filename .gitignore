@@ -4,6 +4,8 @@ build/
 dist/
 .idea/
 .vscode/
+romao_images/
+imagens_originais/
 
 *.pyc
 *.log
